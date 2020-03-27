@@ -30,11 +30,13 @@ navigation.navigate('Password Entry',{item})
       <FlatList
         data={DATA}
         renderItem={({item}) => (
-          <TouchableOpacity onPress={()=>pageNavigation(item)}>
-            <View style={{padding: 20,borderBottomColor:'#6c63ff',borderBottomWidth:1}}>
+         
+            <View style={{borderBottomColor:'#6c63ff',borderBottomWidth:1}}>
+               <TouchableOpacity style={{padding: 20}} onPress={()=>pageNavigation(item)}>
               <Text style={{fontSize: 24}}>{item.title}</Text>
+              </TouchableOpacity>
             </View>
-          </TouchableOpacity>
+          
         )}
       />
     </View>
