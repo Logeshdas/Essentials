@@ -7,6 +7,9 @@ import {
   TextInput,
   Button,
 } from 'react-native';
+import {db} from '../config'
+
+
 
 function PasswordEntry({route}) {
   console.warn(route);
@@ -17,6 +20,10 @@ function PasswordEntry({route}) {
   const submit = () => {
     console.warn('title', title);
     console.warn('password', password);
+      db.ref('/savepassword').push({
+        title: title,
+        password:password
+      });
   };
 
   return (
