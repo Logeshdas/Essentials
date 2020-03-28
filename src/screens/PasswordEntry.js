@@ -8,26 +8,31 @@ import {
   Button,
 } from 'react-native';
 import {db} from '../config'
+import {Container} from './styles'
 
 
-
-function PasswordEntry({route}) {
-  console.warn(route);
+function PasswordEntry({route,navigation}) {
   const data = route.params.item;
   const [title, setTitle] = useState('');
   const [password, setPassword] = useState('');
 
   const submit = () => {
-    console.warn('title', title);
-    console.warn('password', password);
+   
+    if(title && password){
       db.ref('/savepassword').push({
         title: title,
         password:password
       });
+      navigation.navigate("Password Saver")
+      console.warn("success")
+    }
+    else(
+      console.warn("please fill all the fields")
+    )
   };
 
   return (
-    <View style={{flex: 1}}>
+    <Container>
       <View
         style={{
           backgroundColor: '#6c63ff',
@@ -41,6 +46,7 @@ function PasswordEntry({route}) {
           style={{height: 45,marginBottom:20,fontSize:20,color:'white'}}
           returnKeyLabel={'next'}
           underlineColorAndroid="white"
+          autoFocus={true}
           placeholder='Title'
           placeholderTextColor='#c4c4c4'
           onChangeText={text => setTitle(text)}
@@ -68,7 +74,7 @@ function PasswordEntry({route}) {
           <Text style={{textAlign: 'center'}}>SUBMIT</Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </Container>
   );
 }
 

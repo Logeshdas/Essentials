@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
+import {Container} from './styles';
 
 function HomeScreen({navigation}) {
   const DATA = [
@@ -25,8 +26,8 @@ function HomeScreen({navigation}) {
       imageUrl: require('../images/saver.png'),
     },
     {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'Coming soon',
+      id: '58694a0f-3da1-471f-bd96-145571q24aw1',
+      title: 'Settings',
       imageUrl: require('../images/saver.png'),
     },
   ];
@@ -37,11 +38,11 @@ function HomeScreen({navigation}) {
     } else if (item.id == '3ac68afc-c605-48d3-a4f8-fbd91aa97f63') {
       navigation.navigate('Receiver');
     } else if (item.id == '58694a0f-3da1-471f-bd96-145571e29d72') {
-      navigation.navigate('Borrower');
+      navigation.navigate('Settings');
     }
   };
   return (
-    <View>
+    <Container>
       <FlatList
         data={DATA}
         numColumns={2}
@@ -49,27 +50,22 @@ function HomeScreen({navigation}) {
           <TouchableOpacity
             style={{flex: 1}}
             onPress={() => pageNavigation(item)}>
-            
-              <View
-                style={{
-                  justifyContent: 'center',
-                  backgroundColor: '#6c63ff',
-                  borderRadius: 10,
-                  height: 200,
-                  margin: 10,
-                }}>
-                    
-                <Text
-                  style={{textAlign: 'center', color: 'white', fontSize: 18}}>
-                  {item.title}
-                </Text>
-                
-              </View>
-          
+            <View
+              style={{
+                justifyContent: 'center',
+                backgroundColor: '#6c63ff',
+                borderRadius: 10,
+                height: 200,
+                margin: 10,
+              }}>
+              <Text style={{textAlign: 'center', color: 'white', fontSize: 18}}>
+                {item.title}
+              </Text>
+            </View>
           </TouchableOpacity>
         )}
       />
-    </View>
+    </Container>
   );
 }
 
